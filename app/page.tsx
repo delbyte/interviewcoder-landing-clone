@@ -17,6 +17,7 @@ import { FAQSection } from "@/components/faq-section"
 import { AffiliateProgram } from "@/components/affiliate-program"
 import { FinalCTA } from "@/components/final-cta" 
 import { useState, useEffect } from "react"
+import { motion } from "framer-motion"
 
 export default function HomePage() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -194,25 +195,95 @@ export default function HomePage() {
         </div>
       </section>
 
-  <Testimonials />
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
+        <Testimonials />
+      </motion.div>
 
-      <ProofSectionTwo />
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
+        <ProofSectionTwo />
+      </motion.div>
 
-      <UndetectabilityGuarantee />
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
+        <UndetectabilityGuarantee />
+      </motion.div>
 
-      <PlatformCompatibility />
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
+        <PlatformCompatibility />
+      </motion.div>
 
-      <UntrackedAnimation />
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
+        <UntrackedAnimation />
+      </motion.div>
 
-      <CommandsSection />
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
+        <CommandsSection />
+      </motion.div>
 
-      <PricingSection />
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
+        <PricingSection />
+      </motion.div>
 
-      <FAQSection />
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
+        <FAQSection />
+      </motion.div>
 
-      <AffiliateProgram />
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
+        <AffiliateProgram />
+      </motion.div>
 
-      <FinalCTA />
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
+        <FinalCTA />
+      </motion.div>
 
       {/* Footer */}
       <footer className="relative">
