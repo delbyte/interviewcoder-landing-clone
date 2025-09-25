@@ -7,13 +7,13 @@ import { Separator } from "@/components/ui/separator"
 import { CheckIcon, PlayIcon, MenuIcon } from "lucide-react"
 import Image from "next/image"
 import { Testimonials } from "@/components/testimonials"
-import { Proof } from "@/components/proof"
-import { UndetectabilityGuarantee } from "@/components/undetectability-guarantee" // Renamed import
-import { PlatformCompatibility } from "@/components/platform-compatibility" // New import
-import { UntrackedAnimation } from "@/components/untracked-animation" // New import
-import { FAQSection } from "@/components/faq-section" // New import
-import { AffiliateProgram } from "@/components/affiliate-program" // New import
-import { FinalCTA } from "@/components/final-cta" // New import
+import { ProofSectionTwo } from "@/components/proof-section-two"
+import { UndetectabilityGuarantee } from "@/components/undetectability-guarantee" 
+import { PlatformCompatibility } from "@/components/platform-compatibility" 
+import { UntrackedAnimation } from "@/components/untracked-animation"
+import { FAQSection } from "@/components/faq-section" 
+import { AffiliateProgram } from "@/components/affiliate-program"
+import { FinalCTA } from "@/components/final-cta" 
 import { useState, useEffect } from "react"
 
 export default function HomePage() {
@@ -113,27 +113,11 @@ export default function HomePage() {
       </header>
 
       {/* Hero Section */}
-      <style dangerouslySetInnerHTML={{ __html: `.hero-bg::before { content: ''; position: absolute; top: 0; left: 0; width: 50%; height: 100%; background-image: url(/images/proof-glow.png); background-size: 100% 100%; background-position: center; background-repeat: no-repeat; } .hero-bg::after { content: ''; position: absolute; top: 0; right: 0; width: 50%; height: 100%; background-image: url(/images/proof-glow.png); background-size: 100% 100%; background-position: center; background-repeat: no-repeat; transform: scaleX(-1); }` }} />
+      <style dangerouslySetInnerHTML={{ __html: `.hero-bg::before { content: ''; position: absolute; top: 0; left: 0; width: 50%; height: 100%; background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.8) 100%), url(/images/proof-glow.png); background-size: cover, 100% 100%; background-position: center; background-repeat: no-repeat; opacity: 0.8; } .hero-bg::after { content: ''; position: absolute; top: 0; right: 0; width: 50%; height: 100%; background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.8) 100%), url(/images/proof-glow.png); background-size: cover, 100% 100%; background-position: center; background-repeat: no-repeat; transform: scaleX(-1); opacity: 0.8; }` }} />
       <section
         className="flex flex-col items-center justify-center pt-32 md:pt-28 m-6 rounded-[38px] text-white overflow-hidden mb-[4rem] lg:mb-[6rem] relative hero-bg"
         style={{ background: 'linear-gradient(to bottom, #FFFFFF10, #FFFFFF00)' }}
       >
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/images/proof-glow.png"
-            alt="Background Glow"
-            fill
-            style={{ objectFit: 'cover' }}
-            className="opacity-30 w-1/2 left-0"
-          />
-          <Image
-            src="/images/proof-glow.png"
-            alt="Background Glow Flipped"
-            fill
-            style={{ objectFit: 'cover' }}
-            className="opacity-30 w-1/2 right-0 transform scaleX(-1)"
-          />
-        </div>
         <div className="max-w-6xl mx-auto text-center relative z-10">
           <h1 className="text-5xl md:text-7xl font-bold mb-6 text-balance flex flex-col items-center justify-center">
             <div className="flex items-center justify-center gap-4">
@@ -144,8 +128,7 @@ export default function HomePage() {
           </h1>
 
           <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto text-balance">
-            Get real-time coding assistance during LeetCode-style interviews. Undetectable, powerful, and designed to
-            help you showcase your true potential.
+            InterviewCoder is an undetectable desktop application that uses AI to help you ace any Leetcode interview or online assesment.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
@@ -183,28 +166,35 @@ export default function HomePage() {
 
         <span className="text-white/60 text-2xl hidden md:block my-8">Trusted by <span className="text-white font-bold">97,000+ Devs</span> Hired at Top Companies</span>
 
-        <div className="max-w-6xl mx-auto text-center relative z-10">
-          <div className="justify-center items-center gap-10 relative overflow-hidden hidden md:flex">
-            <img alt="google" className="transition-all duration-200 hover:scale-110 opacity-60 hover:opacity-100" style={{width: '120px', height: '120px', objectFit: 'contain'}} src="/images/google-logo.png" />
-            <img alt="amazon" className="transition-all duration-200 hover:scale-110 opacity-60 hover:opacity-100" style={{width: '120px', height: '120px', objectFit: 'contain'}} src="/images/amazon-logo.png" />
-            <img alt="meta" className="transition-all duration-200 hover:scale-110 opacity-60 hover:opacity-100" style={{width: '120px', height: '120px', objectFit: 'contain'}} src="/images/meta-logo.png" />
-            <img alt="netflix" className="transition-all duration-200 hover:scale-110 opacity-60 hover:opacity-100" style={{width: '120px', height: '120px', objectFit: 'contain'}} src="/images/netflix-logo.png" />
-            <img alt="spotify" className="transition-all duration-200 hover:scale-110 opacity-60 hover:opacity-100" style={{width: '120px', height: '120px', objectFit: 'contain'}} src="/images/spotify-logo.png" />
-            <img alt="google" className="transition-all duration-200 hover:scale-110 opacity-60 hover:opacity-100" style={{width: '120px', height: '120px', objectFit: 'contain'}} src="/images/google-logo.png" />
-            <img alt="amazon" className="transition-all duration-200 hover:scale-110 opacity-60 hover:opacity-100" style={{width: '120px', height: '120px', objectFit: 'contain'}} src="/images/amazon-logo.png" />
-            <img alt="meta" className="transition-all duration-200 hover:scale-110 opacity-60 hover:opacity-100" style={{width: '120px', height: '120px', objectFit: 'contain'}} src="/images/meta-logo.png" />
-            <img alt="netflix" className="transition-all duration-200 hover:scale-110 opacity-60 hover:opacity-100" style={{width: '120px', height: '120px', objectFit: 'contain'}} src="/images/netflix-logo.png" />
-            <img alt="spotify" className="transition-all duration-200 hover:scale-110 opacity-60 hover:opacity-100" style={{width: '120px', height: '120px', objectFit: 'contain'}} src="/images/spotify-logo.png" />
+          <div className="w-full mx-auto text-center relative z-20">
+                  <div className="justify-center items-center gap-10 relative overflow-hidden hidden md:flex">
+            <img alt="google" className="transition-all duration-200 hover:scale-110 opacity-60 hover:opacity-100" style={{width: '180px', height: '240px', objectFit: 'contain'}} src="/images/google-logo.png" />
+            <img alt="amazon" className="transition-all duration-200 hover:scale-110 opacity-60 hover:opacity-100" style={{width: '180px', height: '240px', objectFit: 'contain'}} src="/images/amazon-logo.png" />
+            <img alt="meta" className="transition-all duration-200 hover:scale-110 opacity-60 hover:opacity-100" style={{width: '180px', height: '240px', objectFit: 'contain'}} src="/images/meta-logo.png" />
+            <img alt="netflix" className="transition-all duration-200 hover:scale-110 opacity-60 hover:opacity-100" style={{width: '180px', height: '240px', objectFit: 'contain'}} src="/images/netflix-logo.png" />
+            <img alt="spotify" className="transition-all duration-200 hover:scale-110 opacity-60 hover:opacity-100" style={{width: '180px', height: '240px', objectFit: 'contain'}} src="/images/spotify-logo.png" />
+            <img alt="google" className="transition-all duration-200 hover:scale-110 opacity-60 hover:opacity-100" style={{width: '180px', height: '240px', objectFit: 'contain'}} src="/images/google-logo.png" />
+            <img alt="amazon" className="transition-all duration-200 hover:scale-110 opacity-60 hover:opacity-100" style={{width: '180px', height: '240px', objectFit: 'contain'}} src="/images/amazon-logo.png" />
+            <img alt="meta" className="transition-all duration-200 hover:scale-110 opacity-60 hover:opacity-100" style={{width: '180px', height: '240px', objectFit: 'contain'}} src="/images/meta-logo.png" />
+            <img alt="netflix" className="transition-all duration-200 hover:scale-110 opacity-60 hover:opacity-100" style={{width: '180px', height: '240px', objectFit: 'contain'}} src="/images/netflix-logo.png" />
+            <img alt="spotify" className="transition-all duration-200 hover:scale-110 opacity-60 hover:opacity-100" style={{width: '180px', height: '240px', objectFit: 'contain'}} src="/images/spotify-logo.png" />
             <div className="absolute inset-y-0 left-0 w-1/2 pointer-events-none z-10" style={{background: 'linear-gradient(to right, rgba(0,0,0,0.8), transparent)'}}></div>
             <div className="absolute inset-y-0 right-0 w-1/2 pointer-events-none z-10" style={{background: 'linear-gradient(to left, rgba(0,0,0,0.8), transparent)'}}></div>
           </div>
         </div>
+        
+        <div className="w-3/5 mx-auto relative z-10">
+          <div className="pt-8" style={{opacity: 1}}>
+            <div className="text-left mb-2 font-semibold text-2xl md:text-3xl lg:text-4xl leading-[130%] text-white/40 lg:max-w-4/7">
+              Trusted by <span className="text-white font-bold">97,000+ developers</span>, landing internship to staff level offers at <span className="text-white font-bold">FAANG, Big Tech, Quant</span>, and more.
+            </div>
+          </div>
+        </div>
       </section>
 
-      <Testimonials />
+  <Testimonials />
 
-      <Proof />
-      <Proof flipped={true} />
+      <ProofSectionTwo />
 
       <UndetectabilityGuarantee />
 
