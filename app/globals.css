@@ -124,6 +124,15 @@
   }
 }
 
+/* Hide scrollbar while keeping scroll functionality */
+::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  scrollbar-width: none;
+}
+
 /* Added keyframes for vertical marquee animations */
 @keyframes marquee-up {
   0% {
