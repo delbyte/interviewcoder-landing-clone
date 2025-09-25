@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 
 export function PlatformCompatibility() {
   const [openItems, setOpenItems] = useState<number[]>([])
@@ -89,12 +90,30 @@ export function PlatformCompatibility() {
 
   return (
     <section id="guaranteed-setup" className="my-[6.25rem] lg:my-[10rem] max-w-7xl mx-auto px-5 md:px-8 lg:px-30">
-      <div className="" style={{ opacity: 1 }}>
+      <motion.div 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.1 }}
+        viewport={{ once: true }}
+        className=""
+      >
         <div className="text-center mb-16">
-          <div className="" style={{ opacity: 1, transform: "none" }}>
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+            className=""
+          >
             <h2 className="text-3xl lg:text-4xl font-semibold text-white mb-6">Guaranteed to Work with Your Setup</h2>
-          </div>
-          <div className="" style={{ opacity: 1, transform: "none" }}>
+          </motion.div>
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+            className=""
+          >
             <p className="text-lg leading-8 text-gray-400 max-w-4xl mx-auto">
               Until companies switch back to in-person interviews or get rid of LeetCode interviews entirely, Interview Coder will work. Here's an up-to-date list of how well we work with each platform.<br />
               In addition to this list, Interview Coder works with any{" "}
@@ -103,15 +122,28 @@ export function PlatformCompatibility() {
               Before you sign up for a subscription, make sure you pass our{" "}
               <a className="text-zinc-200 hover:text-white underline underline-offset-4" href="/help?section=basic-checks">basic checks</a>.
             </p>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
 
-      <div className="" style={{ opacity: 1, transform: "none" }}>
+      <motion.div 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.4 }}
+        viewport={{ once: true }}
+        className=""
+      >
         <div className="max-w-4xl mx-auto">
           <div className="relative flex flex-col divide-y divide-gray-800/50">
             {platforms.map((platform, index) => (
-              <div key={index} className="" style={{ opacity: 1, transform: "none" }}>
+              <motion.div 
+                key={index} 
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.5 + (index * 0.1) }}
+                viewport={{ once: true }}
+                className=""
+              >
                 <div className="group relative flex items-center w-full hover:bg-gray-800/30 transition-colors duration-200 cursor-pointer">
                   <div className="flex flex-col w-full">
                     <div 
@@ -150,7 +182,7 @@ export function PlatformCompatibility() {
                           </div>
                         )}
                         <div className="flex items-center gap-4 ml-auto">
-                          <svg 
+                          <motion.svg 
                             xmlns="http://www.w3.org/2000/svg" 
                             width="20" 
                             height="20" 
@@ -160,45 +192,70 @@ export function PlatformCompatibility() {
                             strokeWidth="2" 
                             strokeLinecap="round" 
                             strokeLinejoin="round" 
-                            className={`text-gray-500 transition-transform duration-200 w-5 h-5 ${
-                              openItems.includes(index) ? 'rotate-0' : 'rotate-180'
-                            }`}
+                            className="text-gray-500 w-5 h-5"
+                            animate={{ rotate: openItems.includes(index) ? 0 : 180 }}
+                            transition={{ duration: 0.3, ease: "easeInOut" }}
                           >
                             <polyline points="6 9 12 15 18 9"></polyline>
-                          </svg>
+                          </motion.svg>
                         </div>
                       </div>
                     </div>
                     
-                    {openItems.includes(index) && (
-                      <div id={`details-${index}`} className="">
-                        <div className="px-4 sm:px-6 py-4 sm:py-5 space-y-4 text-sm bg-gray-800/10">
-                          {platform.hasWarning && (
-                            <div className="text-gray-300 leading-relaxed">
-                              {platform.warningContent}
-                            </div>
-                          )}
-                          <div className="text-gray-400 leading-relaxed">
-                            We've thoroughly tested this and can confirm it works perfectly as long as you pass these{" "}
-                            <a target="_blank" className="text-zinc-200 hover:text-white underline underline-offset-4" href="/help?section=basic-checks">
-                              basic checks
-                            </a>{" "}
-                            first. Want to know exactly how we keep you undetectable? Check out our{" "}
-                            <a target="_blank" className="text-zinc-200 hover:text-white underline underline-offset-4" href="/still_working">
-                              behind-the-scenes explanation
-                            </a>{" "}
-                            - we've laid out everything in detail.
+                    <AnimatePresence>
+                      {openItems.includes(index) && (
+                        <motion.div 
+                          id={`details-${index}`} 
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                          className="overflow-hidden"
+                        >
+                          <div className="px-4 sm:px-6 py-4 sm:py-5 space-y-4 text-sm bg-gray-800/10">
+                            {platform.hasWarning && (
+                              <motion.div 
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.3, delay: 0.1 }}
+                                className="text-gray-300 leading-relaxed"
+                              >
+                                {platform.warningContent}
+                              </motion.div>
+                            )}
+                            <motion.div 
+                              initial={{ opacity: 0, y: 20 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ duration: 0.3, delay: platform.hasWarning ? 0.2 : 0.1 }}
+                              className="text-gray-400 leading-relaxed"
+                            >
+                              We've thoroughly tested this and can confirm it works perfectly as long as you pass these{" "}
+                              <a target="_blank" className="text-zinc-200 hover:text-white underline underline-offset-4" href="/help?section=basic-checks">
+                                basic checks
+                              </a>{" "}
+                              first. Want to know exactly how we keep you undetectable? Check out our{" "}
+                              <a target="_blank" className="text-zinc-200 hover:text-white underline underline-offset-4" href="/still_working">
+                                behind-the-scenes explanation
+                              </a>{" "}
+                              - we've laid out everything in detail.
+                            </motion.div>
                           </div>
-                        </div>
-                      </div>
-                    )}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
           
-          <div className="" style={{ opacity: 1, transform: "none" }}>
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1.2 }}
+            viewport={{ once: true }}
+            className=""
+          >
             <div className="mt-8">
               <p className="text-center text-sm text-zinc-500 px-4">
                 Warning: Some MacOS versions are experiencing a WebRTC issue that breaks Interview Coder. If you're on MacOS, please make sure you pass our{" "}
@@ -208,9 +265,9 @@ export function PlatformCompatibility() {
                 to make sure you're good to go.
               </p>
             </div>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }

@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 
 export function FAQSection() {
   const [openFAQ, setOpenFAQ] = useState("is-this-cheating")
@@ -60,22 +61,41 @@ export function FAQSection() {
   return (
     <section className="max-w-7xl mx-auto px-5 md:px-8 lg:px-30 my-[6.25rem] lg:my-[10rem] relative bg-black" aria-labelledby="faq-heading">
       <div className="flex flex-col gap-[51px] items-center justify-start p-0 relative size-full">
-        <div className="" style={{ opacity: 1 }}>
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          viewport={{ once: true }}
+          className=""
+        >
           <div className="flex flex-col gap-2.5 items-center justify-start p-0 relative shrink-0 w-full">
-            <div className="" style={{ opacity: 1, transform: "none" }}>
+            <motion.div 
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+              className=""
+            >
               <div className="font-['Inter:Semi_Bold',_sans-serif] font-semibold leading-[1.3] max-w-[669px] not-italic relative shrink-0 text-[30px] lg:text-[40px] text-center tracking-[-1.2px] lg:tracking-[-1.6px] w-full">
                 <p className="block mb-0 text-[rgba(255,255,255,0.4)]">Got Questions?</p>
                 <p className="block text-[#ffffff]">We've Got Answers</p>
               </div>
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
         
         <div className="flex flex-col gap-[13px] md:gap-5 items-start justify-start w-full" role="list" aria-label="Frequently asked questions">
           {faqs.map((faq, index) => {
             const isOpen = openFAQ === faq.id
             return (
-            <div key={faq.id} className="w-full" style={{ opacity: 1, transform: "none" }}>
+            <motion.div 
+              key={faq.id} 
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 + (index * 0.1) }}
+              viewport={{ once: true }}
+              className="w-full"
+            >
               <div className={`rounded-[20px] relative w-full ${isOpen ? "p-[1px]" : ""}`} style={isOpen ? { background: "linear-gradient(180deg, #EFCC3A 0%, transparent 100%)", borderRadius: "20px" } : {}}>
                 <div className={`rounded-[20px] relative w-full ${isOpen ? "" : "bg-[rgba(255,255,255,0.11)]"}`} style={isOpen ? { background: "linear-gradient(180deg, rgba(239, 204, 58, 0.10) 0%, rgba(239, 204, 58, 0.00) 100%), #171717", borderRadius: "20px" } : {}}>
                   <button 
@@ -88,34 +108,53 @@ export function FAQSection() {
                       <p className="block leading-[1.5] lg:leading-[normal]">{faq.question}</p>
                     </div>
                     <div className="bg-[rgba(255,255,255,0.1)] flex flex-row gap-2.5 items-center justify-start p-[8px] lg:p-[9px] rounded-[40px] shrink-0">
-                      <div style={{ transform: isOpen ? "rotate(180deg)" : "none" }}>
-                        {isOpen ? (
-                          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" className="size-[22px]">
-                            <path d="M5 11H17" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
-                          </svg>
-                        ) : (
-                          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" className="size-[22px]">
-                            <path d="M11 5V17M5 11H17" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
-                          </svg>
-                        )}
-                      </div>
+                      <motion.div 
+                        animate={{ rotate: isOpen ? 45 : 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                      >
+                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" className="size-[22px]">
+                          <path d="M11 5V17M5 11H17" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
+                        </svg>
+                      </motion.div>
                     </div>
                   </button>
-                  {isOpen && faq.answer && (
-                    <div className="overflow-hidden" id={`faq-${faq.id}`} role="region" style={{ height: "auto", opacity: 1 }}>
-                      <div className="font-['Inter:Regular',_sans-serif] font-normal leading-[0] not-italic text-[14px] md:text-[16px] text-[rgba(255,255,255,0.67)] text-left tracking-[-0.14px] md:tracking-[-0.16px] w-full px-4 pb-3.5 md:px-6 md:pb-[17px] lg:px-[26px] lg:pb-[22px]">
-                        <p className="block leading-[1.6]">{faq.answer}</p>
-                      </div>
-                    </div>
-                  )}
+                  <AnimatePresence>
+                    {isOpen && faq.answer && (
+                      <motion.div 
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                        className="overflow-hidden" 
+                        id={`faq-${faq.id}`} 
+                        role="region"
+                      >
+                        <motion.div 
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 20 }}
+                          transition={{ duration: 0.3, delay: 0.1 }}
+                          className="font-['Inter:Regular',_sans-serif] font-normal leading-[0] not-italic text-[14px] md:text-[16px] text-[rgba(255,255,255,0.67)] text-left tracking-[-0.14px] md:tracking-[-0.16px] w-full px-4 pb-3.5 md:px-6 md:pb-[17px] lg:px-[26px] lg:pb-[22px]"
+                        >
+                          <p className="block leading-[1.6]">{faq.answer}</p>
+                        </motion.div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               </div>
-            </div>
+            </motion.div>
             )
           })}
         </div>
         
-        <div className="" style={{ opacity: 1, transform: "none" }}>
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1.2 }}
+          viewport={{ once: true }}
+          className=""
+        >
           <div className="flex flex-col gap-[20px] md:gap-2.5 items-start justify-start px-4 py-[14px] md:px-[26px] md:py-[22px] relative rounded-[20px] shrink-0 w-full max-w-[900px] -mt-[38px] sm:-mt-[31px]">
             <div className="absolute border border-[rgba(255,255,255,0.23)] border-dashed inset-0 pointer-events-none rounded-[20px]" aria-hidden="true"></div>
             <div className="flex flex-col md:flex-row gap-[20px] md:gap-2.5 items-start md:items-end justify-start p-0 relative shrink-0 w-full">
@@ -141,7 +180,7 @@ export function FAQSection() {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

@@ -1,24 +1,51 @@
+"use client"
+
 import Image from "next/image"
+import { motion } from "framer-motion"
 
 export function PricingSection() {
   return (
     <section className="my-[6.25rem] lg:my-[10rem] bg-black max-w-7xl mx-auto px-5 md:px-8 lg:px-30">
-      <div className="" style={{ opacity: 1 }}>
+      <motion.div 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.1 }}
+        viewport={{ once: true }}
+        className=""
+      >
         <div className="text-center mb-13 md:mb-24">
-          <div className="" style={{ opacity: 1, transform: "none" }}>
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+            className=""
+          >
             <h2 className="text-4xl font-semibold text-white mb-4">Pricing</h2>
-          </div>
-          <div className="" style={{ opacity: 1, transform: "none" }}>
+          </motion.div>
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+            className=""
+          >
             <p className="text-lg text-gray-400 max-w-2xl mx-auto">
               How much is a SWE job offer worth to you?
             </p>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
       
       <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto items-stretch">
-        {/* Free Plan */}
-        <div className="bg-[#1E1E1E] rounded-3xl p-7 flex flex-col" style={{ opacity: 1, transform: "none" }}>
+        {/* Free Plan - Floats up second (with monthly plan) */}
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          viewport={{ once: true }}
+          className="bg-[#1E1E1E] rounded-3xl p-7 flex flex-col"
+        >
           <div className="flex justify-start mb-4">
             <div className="flex items-center gap-3 bg-[#FFFFFF]/4 p-[6px] rounded-2xl w-fit">
               <Image
@@ -75,10 +102,16 @@ export function PricingSection() {
             </div>
             <div className="h-6"></div>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Pro Plan Annual - Best Deal */}
-        <div className="relative top-12 md:top-0" style={{ opacity: 1, transform: "none" }}>
+        {/* Pro Plan Annual - Best Deal - Floats up first */}
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          viewport={{ once: true }}
+          className="relative top-12 md:top-0"
+        >
           <div aria-hidden="true" className="absolute inset-0 flex justify-center">
             <div className="absolute top-[-42px] left-[-4px] right-[-4px] h-full rounded-3xl bg-gradient-to-b from-[#FFD833] to-[#FFD83300] shadow-2xl">
               <div className="text-black px-6 pt-2 rounded-full font-semibold">Best Deal</div>
@@ -159,10 +192,16 @@ export function PricingSection() {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Pro Plan Monthly */}
-        <div className="bg-[#1E1E1E] rounded-3xl p-7 flex flex-col relative top-14 md:top-0" style={{ opacity: 1, transform: "none" }}>
+        {/* Pro Plan Monthly - Floats up second (with free plan) */}
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          viewport={{ once: true }}
+          className="bg-[#1E1E1E] rounded-3xl p-7 flex flex-col relative top-14 md:top-0"
+        >
           <div className="relative z-10 flex items-center justify-between mb-4">
             <div className="flex items-center gap-3 bg-[#FFFFFF]/4 p-[6px] rounded-2xl w-fit">
               <Image
@@ -236,7 +275,7 @@ export function PricingSection() {
               <span className="text-white/90">24/7 customer support</span>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

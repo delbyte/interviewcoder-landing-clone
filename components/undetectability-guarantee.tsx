@@ -1,11 +1,17 @@
 "use client"
 
 import Image from "next/image"
+import { motion } from "framer-motion"
 
 export function UndetectabilityGuarantee() {
   return (
     <section className="max-w-7xl mx-auto px-5 md:px-8 lg:px-30 my-[6.25rem] lg:my-[7.5rem]">
-      <div className="" style={{ opacity: 1 }}>
+      <motion.div 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.1 }}
+        viewport={{ once: true }}
+      >
         <div className="text-center mb-16 lg:flex lg:items-center">
           <h2 className="text-4xl lg:text-4xl font-bold text-white/40 mb-6 lg:mb-0 text-left leading-[1.3]">
             See how we guarantee <span className="text-white">undetectability</span>
@@ -23,9 +29,15 @@ export function UndetectabilityGuarantee() {
             </button>
           </div>
         </div>
-      </div>
+      </motion.div>
 
-      <div className="space-y-6">
+      <motion.div 
+        className="space-y-6"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
+        viewport={{ once: true }}
+      >
         <div className="grid grid-cols-1 lg:grid-cols-8 gap-6 lg:aspect-[2.4/1]">
           <div className="bg-[#151515] rounded-2xl overflow-hidden lg:col-span-5 relative pt-4 aspect-[1.5/1] lg:aspect-auto cursor-pointer group hover:scale-[1.02] transition-transform">
             <div className="absolute left-0 bottom-0 px-5 md:px-8 py-4 h-20 flex justify-between items-center z-10 w-full">
@@ -111,7 +123,7 @@ export function UndetectabilityGuarantee() {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }
