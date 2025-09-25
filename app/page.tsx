@@ -14,61 +14,109 @@ import { UntrackedAnimation } from "@/components/untracked-animation" // New imp
 import { FAQSection } from "@/components/faq-section" // New import
 import { AffiliateProgram } from "@/components/affiliate-program" // New import
 import { FinalCTA } from "@/components/final-cta" // New import
+import { useState, useEffect } from "react"
 
 export default function HomePage() {
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Navigation Header */}
-      <header className="fixed top-2 inset-x-0 z-50 px-4">
-        <nav className="max-w-7xl mx-auto bg-card/80 backdrop-blur-lg border border-border rounded-xl px-6 py-3">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <Image src="/images/interviewcoder-logo.png" alt="Interview Coder Logo" width={40} height={40} />
-              <span className="text-xl font-semibold">Interview Coder</span>
+      <header className={`fixed inset-x-0 z-50 transition-all duration-300 top-2`}>
+        <nav className={`transition-all duration-300 p-4 max-w-[92vw] mx-auto rounded-2xl z-[60]`} style={isScrolled ? { transform: 'translateY(15px)' } : { transform: 'translateY(40px)' }}>
+          {!isScrolled ? (
+            <div className="hidden xl:flex flex-row self-start items-center justify-between w-full bg-transparent">
+              <a className="z-100 text-white hover:text-white/80 transition-colors flex items-center gap-2 shrink-0" href="/">
+                <Image src="/images/interviewcoder-logo.png" alt="Interview Coder Logo" width={46} height={46} className="rounded-xl" />
+                <span className="text-sm font-semibold transition-opacity duration-200 md:block hidden text-[1.2rem] tracking-tighter">Interview Coder</span>
+              </a>
+              <div className="xl:flex flex-row flex-1 absolute inset-0 hidden items-center justify-center gap-1 xl:gap-2 text-sm text-zinc-600 font-medium hover:text-zinc-800 transition duration-200">
+                <a className="hover:bg-neutral-800 rounded-full duration-200 transition-all text-white/70 relative px-2 xl:px-4 py-2 whitespace-nowrap cursor-pointer" href="/#proof-section">
+                  <span className="relative z-20 flex items-center text-sm xl:text-base">Proof
+                    <div className="hover:cursor-pointer inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold focus:outline-hidden focus:ring-2 focus:ring-ring focus:ring-offset-2 relative bg-primary/10 text-primary hover:opacity-90 transition-all border border-primary/40 ml-2" style={{textShadow: '0_0_10px_hsl(60_100%_50%_/_0.5)', boxShadow: '0_0_20px_hsl(60_100%_50%_/_0.3)'}}>
+                      <div className="absolute -inset-0.5 bg-primary/20 rounded-full blur-[8px] -z-10"></div>
+                      NEW
+                    </div>
+                  </span>
+                </a>
+                <a className="hover:bg-neutral-800 rounded-full duration-200 transition-all text-white/70 relative px-2 xl:px-4 py-2 whitespace-nowrap cursor-pointer" href="/#pricing">
+                  <span className="relative z-20 flex items-center text-sm xl:text-base">Pricing</span>
+                </a>
+                <a className="hover:bg-neutral-800 rounded-full duration-200 transition-all text-white/70 relative px-2 xl:px-4 py-2 whitespace-nowrap cursor-pointer" href="/help">
+                  <span className="relative z-20 flex items-center text-sm xl:text-base">Help</span>
+                </a>
+                <a className="hover:bg-neutral-800 rounded-full duration-200 transition-all text-white/70 relative px-2 xl:px-4 py-2 whitespace-nowrap cursor-pointer" href="/blog">
+                  <span className="relative z-20 flex items-center text-sm xl:text-base">Blog</span>
+                </a>
+                <a className="hover:bg-neutral-800 rounded-full duration-200 transition-all text-white/70 relative px-2 xl:px-4 py-2 whitespace-nowrap cursor-pointer" href="/still_working">
+                  <span className="relative z-20 flex items-center text-sm xl:text-base">How it works</span>
+                </a>
+              </div>
+              <div className="flex items-center gap-4">
+                <a className="text-stone-400 font-medium text-sm hover:text-white mr-2 z-20" href="/signin">Login</a>
+                <button className="hidden rounded-full bg-white text-black font-semibold px-4 py-2 hover:bg-amber-200 md:flex items-center gap-2">
+                  <span>Download for Free</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-chevron-down w-4 h-4 cursor-pointer">
+                    <path d="m6 9 6 6 6-6"></path>
+                  </svg>
+                </button>
+              </div>
             </div>
-
-            <div className="hidden md:flex items-center gap-8">
-              <a href="#testimonials" className="text-muted-foreground hover:text-foreground transition-colors">
-                Testimonials
+          ) : (
+            <div className="hidden xl:flex flex-row self-start items-center justify-between w-full bg-neutral-950/80 select-none overflow-visible p-4 rounded-2xl" style={{ backdropFilter: 'blur(10px)', boxShadow: 'rgba(34, 42, 53, 0.06) 0px 0px 24px, rgba(0, 0, 0, 0.05) 0px 1px 1px, rgba(34, 42, 53, 0.04) 0px 0px 0px 1px, rgba(34, 42, 53, 0.08) 0px 0px 4px, rgba(47, 48, 55, 0.05) 0px 16px 68px, rgba(255, 255, 255, 0.1) 0px 1px 0px inset' }}>
+              <a className="z-100 text-white hover:text-white/80 transition-colors flex items-center gap-2 shrink-0" href="/">
+                <Image src="/images/interviewcoder-logo.png" alt="Interview Coder Logo" width={46} height={46} className="rounded-xl" />
+                <span className="text-sm font-semibold transition-opacity duration-200 md:block hidden text-[1.2rem] tracking-tighter">Interview Coder</span>
               </a>
-              <a href="#proof" className="text-muted-foreground hover:text-foreground transition-colors">
-                Proof
-              </a>
-              <a href="#undetectability" className="text-muted-foreground hover:text-foreground transition-colors">
-                Undetectability
-              </a>
-              <a href="#compatibility" className="text-muted-foreground hover:text-foreground transition-colors">
-                Compatibility
-              </a>
-              <a href="#pricing" className="text-muted-foreground hover:text-foreground transition-colors">
-                Pricing
-              </a>
-              <a href="#faq" className="text-muted-foreground hover:text-foreground transition-colors">
-                FAQ
-              </a>
-              <Button variant="outline" size="sm">
-                Log in
-              </Button>
-              <Button size="sm">Get Started</Button>
+              <div className="xl:flex flex-row flex-1 absolute inset-0 hidden items-center justify-center gap-1 xl:gap-2 text-sm text-zinc-600 font-medium hover:text-zinc-800 transition duration-200">
+                <a className="hover:bg-neutral-800 rounded-full duration-200 transition-all text-white/70 relative px-2 xl:px-4 py-2 whitespace-nowrap cursor-pointer" href="/#proof-section">
+                  <span className="relative z-20 flex items-center text-sm xl:text-base">Proof
+                    <div className="hover:cursor-pointer inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold focus:outline-hidden focus:ring-2 focus:ring-ring focus:ring-offset-2 relative bg-primary/10 text-primary hover:opacity-90 transition-all border border-primary/40 ml-2" style={{textShadow: '0_0_10px_hsl(60_100%_50%_/_0.5)', boxShadow: '0_0_20px_hsl(60_100%_50%_/_0.3)'}}>
+                      <div className="absolute -inset-0.5 bg-primary/20 rounded-full blur-[8px] -z-10"></div>
+                      NEW
+                    </div>
+                  </span>
+                </a>
+                <a className="hover:bg-neutral-800 rounded-full duration-200 transition-all text-white/70 relative px-2 xl:px-4 py-2 whitespace-nowrap cursor-pointer" href="/#pricing">
+                  <span className="relative z-20 flex items-center text-sm xl:text-base">Pricing</span>
+                </a>
+                <a className="hover:bg-neutral-800 rounded-full duration-200 transition-all text-white/70 relative px-2 xl:px-4 py-2 whitespace-nowrap cursor-pointer" href="/help">
+                  <span className="relative z-20 flex items-center text-sm xl:text-base">Help</span>
+                </a>
+                <a className="hover:bg-neutral-800 rounded-full duration-200 transition-all text-white/70 relative px-2 xl:px-4 py-2 whitespace-nowrap cursor-pointer" href="/blog">
+                  <span className="relative z-20 flex items-center text-sm xl:text-base">Blog</span>
+                </a>
+                <a className="hover:bg-neutral-800 rounded-full duration-200 transition-all text-white/70 relative px-2 xl:px-4 py-2 whitespace-nowrap cursor-pointer" href="/still_working">
+                  <span className="relative z-20 flex items-center text-sm xl:text-base">How it works</span>
+                </a>
+              </div>
+              <div className="flex items-center gap-4">
+                <a className="text-stone-400 font-medium text-sm hover:text-white mr-2 z-20" href="/signin">Login</a>
+                <button className="hidden rounded-full bg-white text-black font-semibold px-4 py-2 hover:bg-amber-200 md:flex items-center gap-2">
+                  <span>Download for Free</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-chevron-down w-4 h-4 cursor-pointer">
+                    <path d="m6 9 6 6 6-6"></path>
+                  </svg>
+                </button>
+              </div>
             </div>
-
-            <Button variant="ghost" size="sm" className="md:hidden">
-              <MenuIcon className="h-5 w-5" />
-            </Button>
-          </div>
+          )}
         </nav>
       </header>
 
       {/* Hero Section */}
+      <style dangerouslySetInnerHTML={{ __html: `.hero-bg::before { content: ''; position: absolute; top: 0; left: 0; width: 50%; height: 100%; background-image: url(/images/proof-glow.png); background-size: 100% 100%; background-position: center; background-repeat: no-repeat; } .hero-bg::after { content: ''; position: absolute; top: 0; right: 0; width: 50%; height: 100%; background-image: url(/images/proof-glow.png); background-size: 100% 100%; background-position: center; background-repeat: no-repeat; transform: scaleX(-1); }` }} />
       <section
-        className="pt-32 pb-20 px-4 relative overflow-hidden"
-        style={{
-          backgroundImage: `url(/images/proof-glow.png), url(/images/proof-glow.png)`,
-          backgroundSize: "50% 100%, 50% 100%",
-          backgroundPosition: "left center, right center",
-          backgroundRepeat: "no-repeat",
-          transform: "scaleX(1)", // Ensure the right image is flipped
-        }}
+        className="flex flex-col items-center justify-center pt-32 md:pt-28 m-6 rounded-[38px] text-white overflow-hidden mb-[4rem] lg:mb-[6rem] relative hero-bg"
+        style={{ background: 'linear-gradient(to bottom, #FFFFFF10, #FFFFFF00)' }}
       >
         <div className="absolute inset-0 z-0">
           <Image
@@ -87,13 +135,11 @@ export default function HomePage() {
           />
         </div>
         <div className="max-w-6xl mx-auto text-center relative z-10">
-          <Badge variant="secondary" className="mb-6">
-            AI Interview Assistant
-          </Badge>
-
           <h1 className="text-5xl md:text-7xl font-bold mb-6 text-balance flex flex-col items-center justify-center">
-            Pass Every
-            <Image src="/images/leetcode-logo.png" alt="Leetcode Logo" width={300} height={100} className="my-4" />
+            <div className="flex items-center justify-center gap-4">
+              Pass Every
+              <Image src="/images/leetcode-logo.png" alt="Leetcode Logo" width={300} height={100} />
+            </div>
             Interview
           </h1>
 
@@ -114,9 +160,6 @@ export default function HomePage() {
 
           <div className="relative w-full max-w-4xl mx-auto aspect-video rounded-lg overflow-hidden shadow-lg mb-12">
             <Image src="/images/hero-video-thumbnail.png" alt="Hero Video Thumbnail" fill className="object-cover" />
-            <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-              <PlayIcon className="h-20 w-20 text-white opacity-80 hover:opacity-100 transition-opacity cursor-pointer" />
-            </div>
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-8 opacity-60">
