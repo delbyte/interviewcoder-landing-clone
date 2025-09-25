@@ -71,7 +71,7 @@ export default function HomePage() {
               </div>
             </div>
           ) : (
-            <div className="hidden xl:flex flex-row self-start items-center justify-between w-full bg-neutral-950/80 select-none overflow-visible p-4 rounded-2xl" style={{ backdropFilter: 'blur(10px)', boxShadow: 'rgba(34, 42, 53, 0.06) 0px 0px 24px, rgba(0, 0, 0, 0.05) 0px 1px 1px, rgba(34, 42, 53, 0.04) 0px 0px 0px 1px, rgba(34, 42, 53, 0.08) 0px 0px 4px, rgba(47, 48, 55, 0.05) 0px 16px 68px, rgba(255, 255, 255, 0.1) 0px 1px 0px inset' }}>
+            <div className="hidden xl:flex flex-row self-start items-center justify-between w-full bg-neutral-950/80 select-none overflow-visible p-2 rounded-2xl" style={{ backdropFilter: 'blur(10px)', boxShadow: 'rgba(34, 42, 53, 0.06) 0px 0px 24px, rgba(0, 0, 0, 0.05) 0px 1px 1px, rgba(34, 42, 53, 0.04) 0px 0px 0px 1px, rgba(34, 42, 53, 0.08) 0px 0px 4px, rgba(47, 48, 55, 0.05) 0px 16px 68px, rgba(255, 255, 255, 0.1) 0px 1px 0px inset' }}>
               <a className="z-100 text-white hover:text-white/80 transition-colors flex items-center gap-2 shrink-0" href="/">
                 <Image src="/images/interviewcoder-logo.png" alt="Interview Coder Logo" width={46} height={46} className="rounded-xl" />
                 <span className="text-sm font-semibold transition-opacity duration-200 md:block hidden text-[1.2rem] tracking-tighter">Interview Coder</span>
@@ -122,15 +122,15 @@ export default function HomePage() {
           <Image
             src="/images/proof-glow.png"
             alt="Background Glow"
-            layout="fill"
-            objectFit="cover"
+            fill
+            style={{ objectFit: 'cover' }}
             className="opacity-30 w-1/2 left-0"
           />
           <Image
             src="/images/proof-glow.png"
             alt="Background Glow Flipped"
-            layout="fill"
-            objectFit="cover"
+            fill
+            style={{ objectFit: 'cover' }}
             className="opacity-30 w-1/2 right-0 transform scaleX(-1)"
           />
         </div>
@@ -149,37 +149,54 @@ export default function HomePage() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Button size="lg" className="text-lg px-8">
-              Download for Free
-            </Button>
-            <Button variant="outline" size="lg" className="text-lg px-8 bg-transparent">
-              <PlayIcon className="w-5 h-5 mr-2" />
-              Watch Demo
-            </Button>
+            <div className="relative">
+              <button className="group relative flex items-center justify-center gap-3 px-5 py-4 rounded-full text-base md:text-lg font-semibold min-w-[200px] overflow-hidden transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed">
+                <div className="absolute inset-0 bg-gradient-to-b from-[#EFCC3A] to-[#EFB63A]"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-white/10 to-transparent"></div>
+                <div className="relative z-10 flex items-center gap-3">
+                  <img alt="Apple" width="18" height="18" className="opacity-90 brightness-0" src="/images/apple.svg" />
+                  <span className="text-black font-semibold tracking-tight">Get for Mac</span>
+                </div>
+                <div className="absolute inset-0 rounded-full shadow-xl shadow-[#EFCC3A]/30 group-hover:shadow-[#EFCC3A]/50 transition-shadow duration-300"></div>
+              </button>
+            </div>
+            <div className="relative">
+              <button className="group relative flex items-center justify-center gap-3 px-5 py-4 rounded-full text-base md:text-lg font-semibold min-w-[200px] overflow-hidden transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed">
+                <div className="absolute inset-0 bg-gradient-to-b from-[#EFCC3A] to-[#EFB63A]"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-white/10 to-transparent"></div>
+                <div className="relative z-10 flex items-center gap-3">
+                  <img alt="Windows" width="18" height="18" className="opacity-90 brightness-0" src="/images/windows.svg" />
+                  <span className="text-black font-semibold tracking-tight">Get for Windows</span>
+                </div>
+                <div className="absolute inset-0 rounded-full shadow-xl shadow-[#EFCC3A]/30 group-hover:shadow-[#EFCC3A]/50 transition-shadow duration-300"></div>
+              </button>
+            </div>
           </div>
+        </div>
 
-          <div className="relative w-full max-w-4xl mx-auto aspect-video rounded-lg overflow-hidden shadow-lg mb-12">
-            <Image src="/images/hero-video-thumbnail.png" alt="Hero Video Thumbnail" fill className="object-cover" />
-          </div>
+                <div className="aspect-video rounded-[32px] overflow-visible shadow-2xl relative p-2 mb-12 mx-auto" style={{background: 'linear-gradient(to bottom, #FFDE5820, #FFFFFF10)', maxWidth: '1100px', width: '100%'}}>
+          <video src="https://api.interviewcoder.co/storage/v1/object/sign/Videos/how%20to%20use_new.MOV?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV8zZWI0ZWNhYy1jNDBlLTQxM2YtYjNjZC00ODIzMzJhNzcxMWMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJWaWRlb3MvaG93IHRvIHVzZV9uZXcuTU9WIiwiaWF0IjoxNzU4MjU0OTg1LCJleHAiOjMxNTM2MDE3NTgyNTQ5ODV9.CbkfCODV_3EmJJymOLmtaBg4uuSa4z12ExTUmBsiT44" poster="/images/hero-video-thumbnail.png" autoPlay muted loop controls playsInline className="w-full h-full rounded-[32px] relative z-10 bg-black" preload="auto">
+            Your browser does not support the video tag.
+          </video>
+          <img alt="Hero Video Top" width="700" height="700" className="absolute rounded-[32px] pointer-events-none z-0" style={{color: 'transparent', top: '-45%', left: '50%', transform: 'translateX(-50%)'}} src="/images/hero-video-top.png" />
+        </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-8 opacity-60">
-            <Image src="/images/amazon-logo.png" alt="Amazon" width={100} height={40} className="h-8 object-contain" />
-            <Image
-              src="/images/netflix-logo.png"
-              alt="Netflix"
-              width={100}
-              height={40}
-              className="h-8 object-contain"
-            />
-            <Image
-              src="/images/spotify-logo.png"
-              alt="Spotify"
-              width={100}
-              height={40}
-              className="h-8 object-contain"
-            />
-            <Image src="/images/google-logo.png" alt="Google" width={100} height={40} className="h-8 object-contain" />
-            <Image src="/images/meta-logo.png" alt="Meta" width={100} height={40} className="h-8 object-contain" />
+        <span className="text-white/60 text-2xl hidden md:block my-8">Trusted by <span className="text-white font-bold">97,000+ Devs</span> Hired at Top Companies</span>
+
+        <div className="max-w-6xl mx-auto text-center relative z-10">
+          <div className="justify-center items-center gap-10 relative overflow-hidden hidden md:flex">
+            <img alt="google" className="transition-all duration-200 hover:scale-110 opacity-60 hover:opacity-100" style={{width: '120px', height: '120px', objectFit: 'contain'}} src="/images/google-logo.png" />
+            <img alt="amazon" className="transition-all duration-200 hover:scale-110 opacity-60 hover:opacity-100" style={{width: '120px', height: '120px', objectFit: 'contain'}} src="/images/amazon-logo.png" />
+            <img alt="meta" className="transition-all duration-200 hover:scale-110 opacity-60 hover:opacity-100" style={{width: '120px', height: '120px', objectFit: 'contain'}} src="/images/meta-logo.png" />
+            <img alt="netflix" className="transition-all duration-200 hover:scale-110 opacity-60 hover:opacity-100" style={{width: '120px', height: '120px', objectFit: 'contain'}} src="/images/netflix-logo.png" />
+            <img alt="spotify" className="transition-all duration-200 hover:scale-110 opacity-60 hover:opacity-100" style={{width: '120px', height: '120px', objectFit: 'contain'}} src="/images/spotify-logo.png" />
+            <img alt="google" className="transition-all duration-200 hover:scale-110 opacity-60 hover:opacity-100" style={{width: '120px', height: '120px', objectFit: 'contain'}} src="/images/google-logo.png" />
+            <img alt="amazon" className="transition-all duration-200 hover:scale-110 opacity-60 hover:opacity-100" style={{width: '120px', height: '120px', objectFit: 'contain'}} src="/images/amazon-logo.png" />
+            <img alt="meta" className="transition-all duration-200 hover:scale-110 opacity-60 hover:opacity-100" style={{width: '120px', height: '120px', objectFit: 'contain'}} src="/images/meta-logo.png" />
+            <img alt="netflix" className="transition-all duration-200 hover:scale-110 opacity-60 hover:opacity-100" style={{width: '120px', height: '120px', objectFit: 'contain'}} src="/images/netflix-logo.png" />
+            <img alt="spotify" className="transition-all duration-200 hover:scale-110 opacity-60 hover:opacity-100" style={{width: '120px', height: '120px', objectFit: 'contain'}} src="/images/spotify-logo.png" />
+            <div className="absolute inset-y-0 left-0 w-1/2 pointer-events-none z-10" style={{background: 'linear-gradient(to right, rgba(0,0,0,0.8), transparent)'}}></div>
+            <div className="absolute inset-y-0 right-0 w-1/2 pointer-events-none z-10" style={{background: 'linear-gradient(to left, rgba(0,0,0,0.8), transparent)'}}></div>
           </div>
         </div>
       </section>
