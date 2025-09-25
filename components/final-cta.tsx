@@ -2,7 +2,7 @@ import Image from "next/image"
 
 export function FinalCTA() {
   return (
-    <section className="relative flex flex-col items-center justify-center mt-[6.25rem] lg:mt-[10rem] mx-5 rounded-[40px] text-white" id="download">
+    <section className="relative flex flex-col items-center justify-center mt-[6.25rem] lg:mt-[10rem] mx-5 rounded-[40px] text-white pb-50" id="download">
       <div className="" style={{ opacity: 1 }}>
         <div className="text-center max-w-4xl mx-auto">
           <div className="" style={{ opacity: 1, transform: "none" }}>
