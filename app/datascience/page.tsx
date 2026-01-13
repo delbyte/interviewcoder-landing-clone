@@ -265,20 +265,91 @@ export default function DataSciencePage() {
             priority
           />
         </div>
+
+        {/* Trusted By Section */}
+        {/* Trusted By Section with Marquee */}
+        <div className="flex flex-col items-center gap-[30px] w-full max-w-[1392px] mx-auto mt-24 mb-16 relative z-20">
+          <style jsx global>{`
+              @keyframes scroll {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-50%); }
+              }
+              .animate-scroll {
+                animation: scroll 30s linear infinite;
+              }
+              .animate-scroll:hover {
+                animation-play-state: paused;
+              }
+            `}</style>
+          <h2
+            style={{
+              fontFamily: "'Inter', sans-serif",
+              fontWeight: 600,
+              fontSize: '25px',
+              lineHeight: '130%',
+              textAlign: 'center',
+              letterSpacing: '-0.03em',
+              color: 'rgba(255, 255, 255, 0.4)'
+            }}
+          >
+            Trusted by 97,000+ Devs and Data Scientists Hired at Top Companies
+          </h2>
+
+          <div
+            className="relative flex flex-row items-center justify-center"
+            style={{
+              width: '100%',
+              maxWidth: '1200px',
+              height: '112.63px',
+              borderRadius: '26.84px',
+              overflow: 'hidden'
+            }}
+          >
+            {/* Fade Gradients */}
+            <div className="absolute left-0 top-0 bottom-0 w-[100px] md:w-[341px] z-10 pointer-events-none" style={{ background: 'linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0) 100%)' }}></div>
+            <div className="absolute right-0 top-0 bottom-0 w-[100px] md:w-[341px] z-10 pointer-events-none" style={{ background: 'linear-gradient(270deg, #000000 0%, rgba(0, 0, 0, 0) 100%)' }}></div>
+
+            {/* Logos Row - Infinite Marquee */}
+            <div className="flex items-center overflow-hidden w-full">
+              <div className="flex items-center gap-[54.58px] animate-scroll whitespace-nowrap opacity-30 select-none min-w-full">
+                {/* Set 1 */}
+                <div className="relative h-[40px] w-[120px] shrink-0"><Image alt="google" fill className="object-contain brightness-0 invert" src="/images/google-logo.png" /></div>
+                <div className="relative h-[40px] w-[120px] shrink-0"><Image alt="amazon" fill className="object-contain brightness-0 invert" src="/images/amazon-logo.png" /></div>
+                <div className="relative h-[40px] w-[120px] shrink-0"><Image alt="meta" fill className="object-contain brightness-0 invert" src="/images/meta-logo.png" /></div>
+                <div className="relative h-[39px] w-[145px] shrink-0"><Image alt="netflix" fill className="object-contain brightness-0 invert" src="/images/netflix-logo.png" /></div>
+                <div className="relative h-[40px] w-[120px] shrink-0"><Image alt="spotify" fill className="object-contain brightness-0 invert" src="/images/spotify-logo.png" /></div>
+
+                {/* Set 2 */}
+                <div className="relative h-[40px] w-[120px] shrink-0"><Image alt="google" fill className="object-contain brightness-0 invert" src="/images/google-logo.png" /></div>
+                <div className="relative h-[40px] w-[120px] shrink-0"><Image alt="amazon" fill className="object-contain brightness-0 invert" src="/images/amazon-logo.png" /></div>
+                <div className="relative h-[40px] w-[120px] shrink-0"><Image alt="meta" fill className="object-contain brightness-0 invert" src="/images/meta-logo.png" /></div>
+                <div className="relative h-[39px] w-[145px] shrink-0"><Image alt="netflix" fill className="object-contain brightness-0 invert" src="/images/netflix-logo.png" /></div>
+                <div className="relative h-[40px] w-[120px] shrink-0"><Image alt="spotify" fill className="object-contain brightness-0 invert" src="/images/spotify-logo.png" /></div>
+
+                {/* Set 3 */}
+                <div className="relative h-[40px] w-[120px] shrink-0"><Image alt="google" fill className="object-contain brightness-0 invert" src="/images/google-logo.png" /></div>
+                <div className="relative h-[40px] w-[120px] shrink-0"><Image alt="amazon" fill className="object-contain brightness-0 invert" src="/images/amazon-logo.png" /></div>
+                <div className="relative h-[40px] w-[120px] shrink-0"><Image alt="meta" fill className="object-contain brightness-0 invert" src="/images/meta-logo.png" /></div>
+                <div className="relative h-[39px] w-[145px] shrink-0"><Image alt="netflix" fill className="object-contain brightness-0 invert" src="/images/netflix-logo.png" /></div>
+                <div className="relative h-[40px] w-[120px] shrink-0"><Image alt="spotify" fill className="object-contain brightness-0 invert" src="/images/spotify-logo.png" /></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
-      <motion.div
+      <div className="mb-24">
+        <DataScienceFeatures />
+      </div>
+
+      {/* Comparison Section */}
+      <motion.section
+        className="mb-32"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-        className="mb-24"
+        transition={{ duration: 0.5 }}
       >
-        <DataScienceFeatures />
-      </motion.div>
-
-      {/* Comparison Section */}
-      <section className="mb-32">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
             Why Interview Coder Works for Data <br className="hidden md:block" />
@@ -286,7 +357,7 @@ export default function DataSciencePage() {
           </h2>
         </div>
         <DataScienceComparison />
-      </section>
+      </motion.section>
 
       {/* Testimonials Section */}
       <section className="mb-32 flex flex-col px-4 md:px-16 lg:px-32">
@@ -371,7 +442,7 @@ export default function DataSciencePage() {
             </p>
 
             {/* Email Container */}
-            <div
+            <motion.div
               style={{
                 display: 'flex',
                 flexDirection: 'row',
@@ -387,6 +458,10 @@ export default function DataSciencePage() {
                 borderRadius: '58px',
                 boxSizing: 'border-box',
               }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
             >
               <span
                 style={{
@@ -436,18 +511,39 @@ export default function DataSciencePage() {
                   Copy email
                 </span>
               </button>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      <PlatformSection />
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
+        <PlatformSection />
+      </motion.div>
 
       {/* Pricing Section */}
-      <DataSciencePricing />
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
+        <DataSciencePricing />
+      </motion.div>
 
       {/* FAQ Section */}
-      <DataScienceFAQ />
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
+        <DataScienceFAQ />
+      </motion.div>
 
       {/* Footer */}
       <footer className="relative w-full overflow-hidden" style={{ background: '#000000' }}>

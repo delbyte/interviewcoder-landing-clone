@@ -2,6 +2,7 @@
 
 import React from "react"
 import Image from "next/image"
+import { motion } from "framer-motion"
 
 interface FeatureCardProps {
     icon: React.ReactNode
@@ -216,26 +217,42 @@ export function DataScienceFeatures() {
             </div>
 
             {/* Feature Cards */}
-            <div
+            <motion.div
                 className="flex flex-col justify-center items-center"
                 style={{
                     gap: '42px',
                     width: '100%',
                     maxWidth: '1240px',
                 }}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-100px" }}
+                variants={{
+                    hidden: { opacity: 0 },
+                    visible: {
+                        opacity: 1,
+                        transition: {
+                            staggerChildren: 0.15
+                        }
+                    }
+                }}
             >
                 {features.map((feature, index) => (
-                    <FeatureCard
-                        key={index}
-                        icon={feature.icon}
-                        title={feature.title}
-                        description={feature.description}
-                        imageSrc={feature.imageSrc}
-                        imageAlt={feature.imageAlt}
-                        reversed={feature.reversed}
-                    />
+                    <motion.div key={index} variants={{
+                        hidden: { opacity: 0, y: 20 },
+                        visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+                    }}>
+                        <FeatureCard
+                            icon={feature.icon}
+                            title={feature.title}
+                            description={feature.description}
+                            imageSrc={feature.imageSrc}
+                            imageAlt={feature.imageAlt}
+                            reversed={feature.reversed}
+                        />
+                    </motion.div>
                 ))}
-            </div>
+            </motion.div>
         </section>
     )
 }
