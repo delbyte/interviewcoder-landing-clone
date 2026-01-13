@@ -4,6 +4,7 @@ import Image from "next/image"
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { DataScienceFeatures } from '@/components/datascience/features-section'
+import { PlatformSection } from '@/components/datascience/platform-section'
 import { DataScienceComparison } from '@/components/datascience/comparison-section'
 import { Testimonials } from '@/components/testimonials'
 import { DataSciencePricing } from '@/components/datascience/pricing-section'
@@ -440,6 +441,8 @@ export default function DataSciencePage() {
         </div>
       </section>
 
+      <PlatformSection />
+
       {/* Pricing Section */}
       <DataSciencePricing />
 
@@ -454,7 +457,7 @@ export default function DataSciencePage() {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            padding: '60px 20px 0',
+            padding: '60px 10px 0',  /* Line 457: Footer horizontal padding - change 10px to adjust */
             gap: '43px',
             width: '100%',
             maxWidth: '1200px',
@@ -469,7 +472,7 @@ export default function DataSciencePage() {
               flexDirection: 'column',
               alignItems: 'center',
               padding: '0px',
-              gap: '21px',
+              gap: '60px',  /* Line 472: Gap between logo, text section, and buttons */
               width: '100%',
               maxWidth: '1200px',
             }}
@@ -551,6 +554,7 @@ export default function DataSciencePage() {
                 maxWidth: '100%',
                 flexWrap: 'wrap',
                 justifyContent: 'center',
+                marginTop: '20px',  /* Line 554: Space between subtitle and buttons - adjust as needed */
               }}
             >
               {/* Windows Button */}
@@ -636,6 +640,7 @@ export default function DataSciencePage() {
               gap: '30px',
               width: '100%',
               maxWidth: '1200px',
+              marginTop: '80px', /* Line 639: Space between buttons and nav bar below - adjust as needed */
             }}
           >
             <div
@@ -644,7 +649,7 @@ export default function DataSciencePage() {
                 flexDirection: 'row',
                 alignItems: 'flex-start',
                 padding: '0px',
-                gap: '70px',
+                gap: '40px',
                 width: '100%',
                 flexWrap: 'wrap',
               }}
@@ -846,12 +851,12 @@ export default function DataSciencePage() {
         </div>
 
         {/* Footer Fade Image */}
-        <div style={{ width: '100%', height: '100px', position: 'relative', marginTop: '40px' }}>
+        <div style={{ width: '100%', height: '100px', position: 'relative', marginTop: '-50px' }}>
           <Image
             src="/images/datascience/footer-fade.png"
             fill
             alt=""
-            style={{ objectFit: 'cover', opacity: 0.4 }}
+            style={{ objectFit: 'cover' }}  /* No opacity - image is already faded */
           />
         </div>
       </footer>
